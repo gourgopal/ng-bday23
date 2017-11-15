@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900'>
+
+      <link rel="stylesheet" href="Content/style.css">
+
+  
+</head>
+
+<body>
+  <h1>Happy Birthday <span id="name"></span></h1>
+<canvas id="birthday"></canvas>
+  
+    <script  src="Scripts/index.js"></script>
+    <script>
+        //var span = document.createElement("span");
+        //span.appendChild(document.createTextNode(getParamValue()));
+        //document.body.appendChild(span);
+        function getParamValue() {
+            return url = window.location.search.substring(1); //get rid of "?" in querystring
+            //var qArray = url.split('&'); //get key-value pairs
+            //for (var i = 0; i < qArray.length; i++) {
+            //    var pArr = qArray[i].split('='); //split key and value
+            //    if (pArr[0] == paramName)
+            //        return pArr[1]; //return value
+            //}
+        }
+        //document.write(getParamValue());
+        console.log(getParamValue());
+        document.getElementById("name").innerHTML = getParamValue();
+    </script>
+</body>
+</html>

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title style="font-size:50%;position:super;vertical-align:top;">Happy 22nd Birthday Manisha!</title>
+    <title>Happy 22nd Birthday Manisha!</title>
     <link href="Content/font-awesome.css" rel="stylesheet" />
     <script src="Scripts/angular.min.js"></script>
     <link href="Content/angular-material.min.css" rel="stylesheet" />
@@ -12,6 +12,15 @@
     <script src="Scripts/angular-material.min.js"></script>
     <script src="Scripts/angular-messages.min.js"></script>
     <style>
+        html {
+            overflow: scroll;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* make scrollbar transparent */
+        }
+
         .hint {
             position: absolute;
             left: 2px;
@@ -26,21 +35,21 @@
 </head>
 
 <body ng-app="Birthday" ng-controller="Manisha" ng-cloak>
-<div>
-  <md-content>
-    <md-nav-bar md-selected-nav-item="'page2'">
-      <md-nav-item md-nav-click="goto('page1')" name="page1">
-        Manisha
-      </md-nav-item>
-      <md-nav-item md-nav-click="goto('page2')" name="page2">
-        Mani
-      </md-nav-item>
-      <md-nav-item md-nav-click="goto('page3')" name="page3">
-        Manki
-      </md-nav-item>
-    </md-nav-bar>
-  </md-content>
-  <md-content>
+    <div>
+        <md-content>
+            <md-nav-bar md-selected-nav-item="'page2'">
+                <md-nav-item md-nav-click="goto('Manisha')" name="page1">
+                    Manisha
+                </md-nav-item>
+                <md-nav-item md-nav-click="goto('Mani')" name="page2">
+                    Mani
+                </md-nav-item>
+                <md-nav-item md-nav-click="goto('Manki')" name="page3">
+                    Manki
+                </md-nav-item>
+            </md-nav-bar>
+        </md-content>
+        <md-content>
             <md-tabs md-dynamic-height md-border-bottom style="height:100%">
                 <md-tab label="Special day">
                     <div style="height:100%;overflow-y:auto;" ng-include src="'SpecialDay.html'"></div>
@@ -53,165 +62,168 @@
                 </md-tab>
             </md-tabs>
         </md-content>
-</div>
+    </div>
+
+    <script type="text/javascript">
+        angular.module('Birthday', ['ngMaterial', 'ngMessages']).controller('Manisha', function ($scope, $mdDialog, $http) {
+            $scope.goto = function (page) {
+                console.log("Goto " + page);
+                var ifr = document.getElementById('myIframe').src = 'content.html?' + page;
+            }
+            var imagePath = 'img/list/60.jpeg';
+
+            $scope.phones = [
+                {
+                    type: 'Home',
+                    number: '(555) 251-1234',
+                    options: {
+                        icon: 'communication:phone'
+                    }
+                },
+                {
+                    type: 'Cell',
+                    number: '(555) 786-9841',
+                    options: {
+                        icon: 'communication:phone',
+                        avatarIcon: true
+                    }
+                },
+                {
+                    type: 'Office',
+                    number: '(555) 314-1592',
+                    options: {
+                        face: imagePath
+                    }
+                },
+                {
+                    type: 'Offset',
+                    number: '(555) 192-2010',
+                    options: {
+                        offset: true,
+                        actionIcon: 'communication:phone'
+                    }
+                }
+            ];
+            $scope.todos = [
+                {
+                    face: imagePath,
+                    what: 'Brunch this weekend?',
+                    who: 'Min Li Chan',
+                    when: '3:08PM',
+                    notes: " I'll be in your neighborhood doing errands"
+                },
+                {
+                    face: imagePath,
+                    what: 'Brunch this weekend?',
+                    who: 'Min Li Chan',
+                    when: '3:08PM',
+                    notes: " I'll be in your neighborhood doing errands"
+                },
+                {
+                    face: imagePath,
+                    what: 'Brunch this weekend?',
+                    who: 'Min Li Chan',
+                    when: '3:08PM',
+                    notes: " I'll be in your neighborhood doing errands"
+                },
+                {
+                    face: imagePath,
+                    what: 'Brunch this weekend?',
+                    who: 'Min Li Chan',
+                    when: '3:08PM',
+                    notes: " I'll be in your neighborhood doing errands"
+                },
+                {
+                    face: imagePath,
+                    what: 'Brunch this weekend?',
+                    who: 'Min Li Chan',
+                    when: '3:08PM',
+                    notes: " I'll be in your neighborhood doing errands"
+                },
+            ];
+        });
+    </script>
+    <script type="text/ng-template" id="SpecialDay.html">
+        <div>
+            <md-toolbar md-scroll-shrink>
+                <div style="background:#FDD835" class="md-toolbar-tools">23<sup>rd</sup>&nbsp; of November, 2017 &nbsp;<span style="color:#FF9800" class="fa fa-birthday-cake"></span></div>
+            </md-toolbar>
+        </div>
+        <iframe id="myIframe" src="content.html?Mani" frameborder="0" style="width:100%;min-height:600px;height:100%"></iframe>
+    </script>
+    <script type="text/ng-template" id="AboutMe.html">
+        <div>
+            <md-toolbar md-scroll-shrink class="md-accent">
+                <div style="background:#FBC02D" class="md-toolbar-tools">About the special person</div>
+            </md-toolbar>
+        </div>
+    </script>
+    <script type="text/ng-template" id="WellWishers.html">
+        <div>
+            <md-toolbar md-scroll-shrink class="md-warn">
+                <div style="background:#F9A825" class="md-toolbar-tools">Well Wishers</div>
+            </md-toolbar>
+            <md-content>
+                <md-list flex>
+                    <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
+                    <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+                        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ item.who }}</h3>
+                            <h4>{{ item.what }}</h4>
+                            <p>{{ item.notes }}</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-subheader class="md-no-sticky">2 line item</md-subheader>
+                    <md-list-item class="md-2-line">
+                        <img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}" />
+                        <div class="md-list-item-text">
+                            <h3>{{ todos[0].who }}</h3>
+                            <p>Secondary text</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>
+                    <md-list-item class="md-3-line md-long-text">
+                        <img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}" />
+                        <div class="md-list-item-text">
+                            <h3>{{ todos[0].who }}</h3>
+                            <p>
+                                Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.
+                                Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum
+                                velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                            </p>
+                        </div>
+                    </md-list-item>
+                    <md-list-item class="md-3-line md-long-text">
+                        <img ng-src="{{todos[1].face}}?25" class="md-avatar" alt="{{todos[1].who}}" />
+                        <div class="md-list-item-text">
+                            <h3>{{ todos[1].who }}</h3>
+                            <p>
+                                Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.
+                                Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum
+                                velit. Class aptent taciti sociosqu ad litra torquent per conubia nostra, per inceptos himenaeos.
+                            </p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-subheader class="md-no-sticky">Classes</md-subheader>
+                    <md-list-item class="md-2-line" ng-repeat="phone in phones">
+                        <md-icon md-svg-icon="{{phone.options.icon}}" ng-if="phone.options.icon" ng-class="{'md-avatar-icon': phone.options.avatarIcon}"></md-icon>
+                        <img ng-src="{{phone.options.face}}?25" class="md-avatar" alt="{{phone.options.face}}"
+                             ng-if="phone.options.face" />
+                        <div class="md-list-item-text" ng-class="{'md-offset': phone.options.offset }">
+                            <h3> {{ phone.number }} </h3>
+                            <p> {{ phone.type }} </p>
+                        </div>
+                        <md-button class="md-secondary md-icon-button" ng-click="doSecondaryAction($event)" ng-if="phone.options.actionIcon" aria-label="call">
+                            <md-icon md-svg-icon="{{phone.options.actionIcon}}"></md-icon>
+                        </md-button>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+    </script>
 </body>
-
-<script type="text/javascript">
-angular.module('Birthday', ['ngMaterial', 'ngMessages']).controller('Manisha', function ($scope, $mdDialog, $http) {
-
-    var imagePath = 'img/list/60.jpeg';
-
-    $scope.phones = [
-      {
-        type: 'Home',
-        number: '(555) 251-1234',
-        options: {
-          icon: 'communication:phone'
-        }
-      },
-      {
-        type: 'Cell',
-        number: '(555) 786-9841',
-        options: {
-          icon: 'communication:phone',
-          avatarIcon: true
-        }
-      },
-      {
-        type: 'Office',
-        number: '(555) 314-1592',
-        options: {
-          face : imagePath
-        }
-      },
-      {
-        type: 'Offset',
-        number: '(555) 192-2010',
-        options: {
-          offset: true,
-          actionIcon: 'communication:phone'
-        }
-      }
-    ];
-    $scope.todos = [
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-    ];
-});
-</script>
-<script type="text/ng-template" id="SpecialDay.html">
-<div>
-  <md-toolbar md-scroll-shrink>
-    <div style="background:#FDD835" class="md-toolbar-tools">23<sup>rd</sup>&nbsp; of November, 2017 &nbsp;<span style="color:#FF9800" class="fa fa-birthday-cake"></span></div>
-  </md-toolbar>
-</div>
-<h1 class=md-display-1>123</h1>
-</script>
-<script type="text/ng-template" id="AboutMe.html">
-<div>
-  <md-toolbar md-scroll-shrink class="md-accent">
-    <div style="background:#FBC02D" class="md-toolbar-tools">About the special person</div>
-  </md-toolbar>
-</div>
-</script>
-<script type="text/ng-template" id="WellWishers.html">
-<div>
-  <md-toolbar md-scroll-shrink class="md-warn">
-    <div style="background:#F9A825" class="md-toolbar-tools">Well Wishers</div>
-  </md-toolbar>
-    <md-content>
-      <md-list flex>
-        <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
-          <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-          <div class="md-list-item-text" layout="column">
-            <h3>{{ item.who }}</h3>
-            <h4>{{ item.what }}</h4>
-            <p>{{ item.notes }}</p>
-          </div>
-        </md-list-item>
-        <md-divider ></md-divider>
-        <md-subheader class="md-no-sticky">2 line item</md-subheader>
-        <md-list-item class="md-2-line">
-          <img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}" />
-          <div class="md-list-item-text">
-            <h3>{{ todos[0].who }}</h3>
-            <p>Secondary text</p>
-          </div>
-        </md-list-item>
-        <md-divider ></md-divider>
-        <md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>
-        <md-list-item class="md-3-line md-long-text">
-          <img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}" />
-          <div class="md-list-item-text">
-            <h3>{{ todos[0].who }}</h3>
-            <p>
-              Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.
-              Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum
-              velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-            </p>
-          </div>
-        </md-list-item>
-        <md-list-item class="md-3-line md-long-text">
-          <img ng-src="{{todos[1].face}}?25" class="md-avatar" alt="{{todos[1].who}}" />
-          <div class="md-list-item-text">
-            <h3>{{ todos[1].who }}</h3>
-            <p>
-              Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.
-              Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum
-              velit. Class aptent taciti sociosqu ad litra torquent per conubia nostra, per inceptos himenaeos.
-            </p>
-          </div>
-        </md-list-item>
-        <md-divider ></md-divider>
-        <md-subheader class="md-no-sticky">Classes</md-subheader>
-        <md-list-item class="md-2-line" ng-repeat="phone in phones">
-          <md-icon md-svg-icon="{{phone.options.icon}}" ng-if="phone.options.icon" ng-class="{'md-avatar-icon': phone.options.avatarIcon}"></md-icon>
-          <img ng-src="{{phone.options.face}}?25" class="md-avatar" alt="{{phone.options.face}}"
-               ng-if="phone.options.face"/>
-          <div class="md-list-item-text" ng-class="{'md-offset': phone.options.offset }">
-            <h3> {{ phone.number }} </h3>
-            <p> {{ phone.type }} </p>
-          </div>
-          <md-button class="md-secondary md-icon-button" ng-click="doSecondaryAction($event)" ng-if="phone.options.actionIcon" aria-label="call">
-            <md-icon md-svg-icon="{{phone.options.actionIcon}}"></md-icon>
-          </md-button>
-        </md-list-item>
-      </md-list>
-    </md-content>
-</div>
-</script>
 </html>
