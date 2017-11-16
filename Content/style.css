@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    /*background: #020202;*/
-    background: #FDD835;
+    background: #020202;
+    /*background: #FDD835;*/
     cursor: crosshair;
 }
 
@@ -11,7 +11,7 @@ canvas {
 
 h1 {
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
@@ -21,4 +21,59 @@ h1 {
     -webkit-user-select: none;
     user-select: none;
     text-align: center;
+}
+p {
+    color: lime;
+    font-family: "Courier";
+    font-size: 20px;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30em;
+    animation: type 4s steps(60, end);
+    position: absolute;
+    bottom: 25%;
+}
+
+    p:nth-child(2) {
+        animation: type2 8s steps(60, end);
+    }
+
+    p a {
+        color: lime;
+        text-decoration: none;
+    }
+
+span {
+    animation: blink 1s infinite;
+}
+
+@keyframes type {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes type2 {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 0;
+    }
+
+    100% {
+        width: 100;
+    }
+}
+
+@keyframes blink {
+    to {
+        opacity: .0;
+    }
+}
+
+::selection {
+    background: black;
 }
