@@ -97,7 +97,34 @@
             $scope.goto = function (page) {
                 console.log("Goto " + page);
                 change(page);
-            }            
+            }
+            function DialogController($scope, $mdDialog) {
+                $scope.hide = function () {
+                    $mdDialog.hide();
+                };
+
+                $scope.cancel = function () {
+                    $mdDialog.cancel();
+                };
+
+                $scope.answer = function (answer) {
+                    $mdDialog.hide(answer);
+                };
+            }
+            $scope.showTabDialog = function (ev) {
+                $mdDialog.show({
+                    controller: DialogController,
+                    templateUrl: 'tabDialog.tmpl.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true
+                })
+                    .then(function (answer) {
+                        $scope.status = 'You said the information was "' + answer + '".';
+                    }, function () {
+                        $scope.status = 'You cancelled the dialog.';
+                    });
+            };
             $scope.todos = [
                 {
                     face: 'img/gopu.png',
@@ -129,6 +156,10 @@
             <md-toolbar md-scroll-shrink class="md-accent">
                 <div style="background:#FBC02D" class="md-toolbar-tools">About the special person</div>
             </md-toolbar>
+            <md-button class="md-primary md-raised" ng-click="showTabDialog($event)">
+                Tab Dialog
+            </md-button>
+            <blockquote>"Because of you, I laugh a little harder, cry a little less, and smile a lot more."</blockquote>
         </div>
     </script>
     <script type="text/ng-template" id="WellWishers.html">
@@ -158,6 +189,92 @@
                 </md-list>
             </md-content>
         </div>
+    </script>
+    <script type="text/ng-template" id="tabDialog.tmpl.html">
+        <md-dialog aria-label="About Manisha">
+            <form>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Mango (Fruit)</h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="cancel()">
+                            <md-icon class="fa fa-birthday-cake" aria-label="Close dialog"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-dialog-content style="max-width:800px;max-height:810px; ">
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="M">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">M in Manisha</h1>
+                                <p>Methodical</p>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="A">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">A in Manisha</h1>
+                                <p>Artististic</p>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="N">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">N in Manisha</h1>
+                                <p>Naughty 👹</p>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="I">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">I in Manisha</h1>
+                                <p>Inventive</p>
+                                <p>Intelligent</p>
+                                <p>Interesting</p>
+                                <p>Inspirational</p>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="S">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">S in Manisha</h1>
+                                <p>Sympathetic</p>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="h">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">H in Manisha</h1>
+                                <p>Humourous</p>
+                                <p>Home loving</p>
+                                <p>Humanitarian</p>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="a">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">A in Manisha</h1>
+                                <p>Ambitious</p>
+                                <p>Angelic</p>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label=".">
+                            <md-content class="md-padding">
+                                <h1 class="md-display-2">Secret place</h1>
+                                <p>You're Awesome</p>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </md-dialog-content>
+
+                <md-dialog-actions layout="row">
+                    <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+                        More on Wikipedia
+                        </md-button>
+                            <span flex></span>
+                            <md-button ng-click="answer('not useful')" >
+                                Not Useful
+                        </md-button>
+                            <md-button ng-click="answer('useful')" style="margin-right:20px;" >
+                                Useful
+                        </md-button>
+                </md-dialog-actions>
+            </form>
+        </md-dialog>
     </script>
 </body>
 </html>
