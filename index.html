@@ -156,10 +156,16 @@
             <md-toolbar md-scroll-shrink class="md-accent">
                 <div style="background:#FBC02D" class="md-toolbar-tools">About the special person</div>
             </md-toolbar>
-            <md-button class="md-primary md-raised" ng-click="showTabDialog($event)">
-                Tab Dialog
+            <md-button class="md-warn md-raised" ng-click="showTabDialog($event)">
+                Know about Manisha
             </md-button>
-            <blockquote>"Because of you, I laugh a little harder, cry a little less, and smile a lot more."</blockquote>
+            <blockquote>
+                <i>
+                    <span class="md-display-6">&#10077;</span>
+                    Because of you, I laugh a little harder, cry a little less, and smile a lot more.
+                    <span class="md-display-6">&#10078; &nbsp;&nbsp; &#8212;&nbsp;&nbsp;Gopu</span>
+                </i>
+            </blockquote>
         </div>
     </script>
     <script type="text/ng-template" id="WellWishers.html">
@@ -195,7 +201,7 @@
             <form>
                 <md-toolbar>
                     <div class="md-toolbar-tools">
-                        <h2>Mango (Fruit)</h2>
+                        <h2>Manisha</h2>
                         <span flex></span>
                         <md-button class="md-icon-button" ng-click="cancel()">
                             <md-icon class="fa fa-birthday-cake" aria-label="Close dialog"></md-icon>
@@ -203,7 +209,7 @@
                     </div>
                 </md-toolbar>
                 <md-dialog-content style="max-width:800px;max-height:810px; ">
-                    <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tabs md-dynamic-height md-stretch-tabs="always" md-border-bottom>
                         <md-tab label="M">
                             <md-content class="md-padding">
                                 <h1 class="md-display-2">M in Manisha</h1>
